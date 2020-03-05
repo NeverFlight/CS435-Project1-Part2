@@ -3,10 +3,14 @@ package com.CS435.project1.part2;
 public class BinarySearchTree {
 
     private TreeNode root;
-    private int size;
+    private int size, levelTraverse;
 
     public int getSize() {
         return size;
+    }
+
+    public int getLevelTraverse() {
+        return levelTraverse;
     }
 
     public TreeNode getRoot() {
@@ -16,6 +20,7 @@ public class BinarySearchTree {
     public BinarySearchTree(int val){
         root = new TreeNode(val);
         size = 0;
+        levelTraverse = 0;
     }
 
     // Easier public API offered here.
@@ -55,8 +60,10 @@ public class BinarySearchTree {
             return new TreeNode(val);
         }
         if(val > root.val){
+            levelTraverse++;
             root.right = insertRec(root.right,val);
         }else if(val < root.val){
+            levelTraverse++;
             root.left = insertRec(root.left,val);
         }
         return root;
@@ -165,6 +172,7 @@ public class BinarySearchTree {
                 }
                 curr = curr.right;
             }
+            levelTraverse++;
         }
         return root;
     }

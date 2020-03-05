@@ -7,10 +7,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         AVLTree tree = new AVLTree(0);
-
-        GetArray.connstructIterBinarySearchTree(10_000);
-        GetArray.connstructIterRandomAVLTree(10_000);
-        GetArray.connstructRecBinarySearchTree(10_000);
+        GetArray.setArrayLength(10_000);
+//        GetArray.constructIterRandomBinarySearchTree();
+//        GetArray.constructIterRandomAVLTree();
+//        GetArray.constructRecRandomBinarySearchTree();
+        GetArray.constructIterSortBinarySearchTree();
+        GetArray.constructIterSortAVLTree();
     }
 
     public static void testAVLTree(){

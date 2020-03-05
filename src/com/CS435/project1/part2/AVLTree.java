@@ -7,7 +7,15 @@ import java.util.Stack;
 public class AVLTree {
     List<TreeNode> ancestor;
     TreeNode root;
+    int levelTraverse;
+
+    public int getLevelTraverse() {
+        return levelTraverse;
+    }
+
+
     public AVLTree(int key){
+        levelTraverse = 0;
         root = new TreeNode(key);
     }
 
@@ -163,6 +171,7 @@ public class AVLTree {
                 }
                 curr = curr.right;
             }
+            levelTraverse++;
         }
         // 1. Update the weight of all ancestor
         updateAncestor();
