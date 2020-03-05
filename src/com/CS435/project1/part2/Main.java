@@ -6,7 +6,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        AVLTree tree = new AVLTree(10);
+        AVLTree tree = new AVLTree(0);
+
+        GetArray.connstructIterBinarySearchTree(10_000);
+        GetArray.connstructIterRandomAVLTree(10_000);
+        GetArray.connstructRecBinarySearchTree(10_000);
+    }
+
+    public static void testAVLTree(){
+        AVLTree tree = new AVLTree(0);
         tree.insert(18);
         tree.printTree();
         tree.insert(20);
@@ -26,7 +34,5 @@ public class Main {
         tree.delete(18);
         tree.printTree();
         System.out.println(tree.findNextIter(20).val);
-
-        GetArray.testRandomAVLTree(10_000);
     }
 }

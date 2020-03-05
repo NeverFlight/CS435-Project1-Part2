@@ -26,7 +26,8 @@ public class GetArray {
         return arr;
     }
 
-    public static void testRandomAVLTree(int n){
+    // Construct the AVLTree with size n.
+    public static void connstructIterRandomAVLTree(int n){
         AVLTree tree = new AVLTree(0);
         int[] rand = GetArray.getRandomArray(n);
         long startTime = System.nanoTime();
@@ -35,7 +36,31 @@ public class GetArray {
         }
         long endTime = System.nanoTime();
         float current = (endTime - startTime) / 1_000_000;
-        System.out.println("The total running time is " + current  + " milliseconds.");
+        System.out.println("The total running time of AVL tree is " + current  + " milliseconds, with " + n + " elements.");
+    }
+
+    public static void connstructRecBinarySearchTree(int n){
+        BinarySearchTree bst = new BinarySearchTree(0);
+        int[] rand = GetArray.getRandomArray(n);
+        long startTime = System.nanoTime();
+        for(int i : rand){
+            bst.insertRec(i);
+        }
+        long endTime = System.nanoTime();
+        float current = (endTime - startTime) / 1_000_000;
+        System.out.println("The total running time of constructing Binary Search tree recursively is " + current + " millisecondsm, with " + n + " elements ");
+    }
+
+    public static void connstructIterBinarySearchTree(int n){
+        BinarySearchTree bst = new BinarySearchTree(0);
+        int[] rand = GetArray.getRandomArray(n);
+        long startTime = System.nanoTime();
+        for(int i : rand){
+            bst.insertRec(i);
+        }
+        long endTime = System.nanoTime();
+        float current = (endTime - startTime) / 1_000_000;
+        System.out.println("The total running time of constructing Binary Search tree iteratively is " + current + " milliseconds, with " + n + " elements.");
     }
 
 }
