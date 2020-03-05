@@ -1,14 +1,11 @@
 package com.CS435.project1.part2;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
-
-
-
     public static void main(String[] args) {
-	// write your code here
         AVLTree tree = new AVLTree(10);
         tree.insert(18);
         tree.printTree();
@@ -28,5 +25,8 @@ public class Main {
         tree.printTree();
         tree.delete(18);
         tree.printTree();
+        System.out.println(tree.findNextIter(20).val);
+
+        GetArray.testRandomAVLTree(10_000);
     }
 }

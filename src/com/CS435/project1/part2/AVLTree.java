@@ -12,12 +12,12 @@ public class AVLTree {
     }
 
     public void insert(int val){
-        System.out.println("Insert " + val + " into the tree: ");
+//        System.out.println("Insert " + val + " into the tree: ");
         insert(root, val);
     }
 
     public void delete(int val){
-        System.out.println("Delete " + val + " from the tree: ");
+//        System.out.println("Delete " + val + " from the tree: ");
         delete(root, val);
     }
 
@@ -92,15 +92,21 @@ public class AVLTree {
     }
 
     private void rotation(TreeNode parent, TreeNode curr, int BF, int val){
-        TreeNode newKid;
-        if(BF > 1 && val < curr.left.val){
+        TreeNode newKid = null;
+//        System.out.println("BF: " + BF + " val: " + val + " curr.val: " + curr.val);
+//        if(curr.left != null){
+//            System.out.println("Curr.left.val BF is " + getBalanced(curr.left));
+//        }else if(curr.right != null){
+//            System.out.println("Curr.right.val BF is " + getBalanced(curr.right));
+//        }
+        if(BF > 1 && getBalanced(curr.left)>=0){
              newKid = rightRotation(curr);
         }
-        else if(BF < -1 && val > curr.right.val){
+        else if(BF < -1 && getBalanced(curr.right)<=0){
             newKid = leftRotation(curr);
-        }else if (BF > 1 && val > curr.left.val){
+        }else if (BF > 1 && getBalanced(curr.left)<0){
             newKid = leftRightRotation(curr);
-        }else {
+        }else if(BF < -1 && getBalanced(curr.right)>0){
             newKid = rightLeftRotation(curr);
         }
         if(newKid.val < parent.val){
@@ -111,18 +117,17 @@ public class AVLTree {
     }
 
     private void rotateRoot(int BF, int val){
-        if(BF > 1 && val < root.left.val){
+        if(BF > 1 && getBalanced(root.left)>=0){
             root = rightRotation(root);
         }
-        else if(BF < -1 && val > root.right.val){
+        else if(BF < -1 && getBalanced(root.right)<=0){
             root = leftRotation(root);
-        }else if (BF > 1 && val > root.left.val){
+        }else if (BF > 1 && getBalanced(root.left)<0){
             root = leftRightRotation(root);
-        }else {
+        }else if(BF < -1 && getBalanced(root.right)>0){
             root = rightLeftRotation(root);
         }
     }
-
 
     private void updateHeight(TreeNode curr){
         int left, right;
@@ -164,7 +169,7 @@ public class AVLTree {
         // 2. check the unbalanced node and if yes, rotate them.
         for(int i = ancestor.size() - 1; i > 0; i--){
             int BF = getBalanced(ancestor.get(i));
-            if(BF >= 2 || BF <= -2){
+            if(Math.abs(BF) >= 2){
                 rotation(ancestor.get(i-1), ancestor.get(i),BF, val);
                 updateAncestor();
             }
