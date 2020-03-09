@@ -11,8 +11,10 @@ public class Main {
 //        GetArray.constructIterRandomBinarySearchTree();
 //        GetArray.constructIterRandomAVLTree();
 //        GetArray.constructRecRandomBinarySearchTree();
-        GetArray.constructIterSortBinarySearchTree();
-        GetArray.constructIterSortAVLTree();
+//        GetArray.constructIterSortBinarySearchTree();
+//        GetArray.constructIterSortAVLTree();
+        GetArray.constructRecRandomBinarySearchTree();
+        GetArray.deleteRecRandomBinarySearchTree();
     }
 
     public static void testAVLTree(){

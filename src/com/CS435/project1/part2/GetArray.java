@@ -6,7 +6,7 @@ public class GetArray {
     static int n = 10_000;
     static int[] rand;
     static int[] sort;
-
+    static BinarySearchTree bst;
     public static void setArrayLength(int n) {
         GetArray.n = n;
         rand = GetArray.getRandomArray(n);
@@ -49,8 +49,10 @@ public class GetArray {
         System.out.println("The total running time of AVL tree is " + current  + " milliseconds, with " + n + " elements.");
     }
 
+
+
     public static void constructRecRandomBinarySearchTree(){
-        BinarySearchTree bst = new BinarySearchTree(0);
+        bst = new BinarySearchTree(0);
         long startTime = System.nanoTime();
         for(int i : rand){
             bst.insertRec(i);
@@ -60,6 +62,18 @@ public class GetArray {
         System.out.println("For recursively bst constructing from random array, the total level order is " + bst.getLevelTraverse());
         System.out.println("The total running time of constructing Binary Search tree recursively is " + current + " millisecondsm, with " + n + " elements ");
     }
+
+
+    public static void deleteRecRandomBinarySearchTree(){
+        long startTime = System.nanoTime();
+        for(int i : rand){
+            bst.deleteRec(i);
+        }
+        long endTime = System.nanoTime();
+        float current = (endTime - startTime) / 1_000_000;
+        System.out.println("The total running time of constructing Binary Search tree iteratively is " + current + " milliseconds, with " + n + " elements.");
+    }
+
 
     public static void constructIterRandomBinarySearchTree(){
         BinarySearchTree bst = new BinarySearchTree(0);
