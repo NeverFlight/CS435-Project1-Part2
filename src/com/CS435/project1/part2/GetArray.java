@@ -7,6 +7,7 @@ public class GetArray {
     static int[] rand;
     static int[] sort;
     static BinarySearchTree bst;
+    static AVLTree tree;
     public static void setArrayLength(int n) {
         GetArray.n = n;
         rand = GetArray.getRandomArray(n);
@@ -46,7 +47,18 @@ public class GetArray {
         long endTime = System.nanoTime();
         float current = (endTime - startTime) / 1_000_000;
         System.out.println("For iteratively AVL tree constructing from random array, the total level order is " + tree.getLevelTraverse());
-        System.out.println("The total running time of AVL tree is " + current  + " milliseconds, with " + n + " elements.");
+        System.out.println("The total running time of constructing AVL tree is " + current  + " milliseconds, with " + n + " elements.");
+    }
+
+    public static void deleteIterRandomAVLTree(){
+        tree = new AVLTree(0);
+        long startTime = System.nanoTime();
+        for(int i : sort){
+            tree.delete(i);
+        }
+        long endTime = System.nanoTime();
+        float current = (endTime - startTime) / 1_000_000;
+        System.out.println("The total running time of deleteing AVL tree is " + current  + " milliseconds, with " + n + " elements.");
     }
 
 
@@ -71,7 +83,7 @@ public class GetArray {
         }
         long endTime = System.nanoTime();
         float current = (endTime - startTime) / 1_000_000;
-        System.out.println("The total running time of constructing Binary Search tree iteratively is " + current + " milliseconds, with " + n + " elements.");
+        System.out.println("The total running time of deleting Binary Search tree iteratively is " + current + " milliseconds, with " + n + " elements.");
     }
 
 
@@ -101,7 +113,7 @@ public class GetArray {
 
     // Construct the AVLTree with size n.
     public static void constructIterSortAVLTree(){
-        AVLTree tree = new AVLTree(0);
+        tree = new AVLTree(0);
         long startTime = System.nanoTime();
         for(int i : sort){
             tree.insert(i);
@@ -111,4 +123,5 @@ public class GetArray {
         System.out.println("For iteratively AVL tree constructing from sorted array, the total level order is " + tree.getLevelTraverse());
         System.out.println("The total running time of AVL tree is " + current  + " milliseconds, with " + n + " elements.");
     }
+
 }

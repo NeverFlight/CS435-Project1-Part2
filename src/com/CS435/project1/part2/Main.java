@@ -13,6 +13,8 @@ public class Main {
 //        GetArray.constructRecRandomBinarySearchTree();
 //        GetArray.constructIterSortBinarySearchTree();
 //        GetArray.constructIterSortAVLTree();
+        GetArray.constructIterRandomAVLTree();
+        GetArray.deleteIterRandomAVLTree();
         GetArray.constructRecRandomBinarySearchTree();
         GetArray.deleteRecRandomBinarySearchTree();
     }
